@@ -6,7 +6,7 @@ const ProgramaSchema = new Schema({
     costo: { type: Number, required: true },
     typePago: { type: String, enum:['mensual','quincenal','semanal'],default:'mensual',required: true },
     duracion: { type: String, required: true },
-    modalidad: { type: String, required: true },
+    modalidad: { type: String, required: true, enum:['presencial','virtual','mixta'] ,default:'presencial' },
     tipo: { type: String, enum:['curso','diplomado','capacitación'], required: true }
 });
 

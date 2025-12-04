@@ -8,3 +8,4 @@ const AulaSchema = new Schema({
 });
 
 export const Aula = model('Aula', AulaSchema);
+

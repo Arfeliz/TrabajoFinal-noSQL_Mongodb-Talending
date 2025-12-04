@@ -3,6 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import{connectDB} from "./src/db/connect.js"
 
+import estudianteRouter from "./src/router/estudiante.routes.js";
+import usuarioRouter from "./src/router/usuario.routes.js";
+import profesorRouter from "./src/router/profesores.routes.js";
+
 //Configurar .env
 dotenv.config();
 
@@ -11,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //Conectar a la base de datos
 connectDB();
@@ -20,7 +25,17 @@ app.get("/", (req, res) => {
     res.send("¡Servidor funcionando correctamente!");
 });
 
+app.use("/api", estudianteRouter);
+app.use("/api", usuarioRouter);
+app.use("/api", profesorRouter);
+
 //Iniciar servidor
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`);
+
+    console.log(`Rutas disponibles: `);
+    console.log(`http://localhost:${PORT}/api/estudiantes`);
+    console.log(`http://localhost:${PORT}/api/profesores`);
+    console.log(`http://localhost:${PORT}/api/usuarios`);
+
 });
