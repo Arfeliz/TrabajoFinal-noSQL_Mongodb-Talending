@@ -6,6 +6,9 @@ import{connectDB} from "./src/db/connect.js"
 import estudianteRouter from "./src/router/estudiante.routes.js";
 import usuarioRouter from "./src/router/usuario.routes.js";
 import profesorRouter from "./src/router/profesores.routes.js";
+import programaRouter from "./src/router/programa.routes.js";
+import aulaRouter from "./src/router/aula.routes.js"
+import grupoRouter from "./src/router/grupo.routes.js";
 
 //Configurar .env
 dotenv.config();
@@ -28,6 +31,9 @@ app.get("/", (req, res) => {
 app.use("/api", estudianteRouter);
 app.use("/api", usuarioRouter);
 app.use("/api", profesorRouter);
+app.use("/api", programaRouter);
+app.use("/api", aulaRouter);
+app.use("/api", grupoRouter);
 
 //Iniciar servidor
 app.listen(PORT, () => {
@@ -37,5 +43,8 @@ app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}/api/estudiantes`);
     console.log(`http://localhost:${PORT}/api/profesores`);
     console.log(`http://localhost:${PORT}/api/usuarios`);
+    console.log(`http://localhost:${PORT}/api/programas`);
+    console.log(`http://localhost:${PORT}/api/aulas`);
+    console.log(`http://localhost:${PORT}/api/grupos`);
 
 });
