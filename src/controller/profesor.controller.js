@@ -65,3 +65,23 @@ export const deleteProfesor = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Obtener profesores por programa
+export const getProfesoresByPrograma = async (req, res) => {
+    try {
+        const profesores = await Profesor.find({ programa: req.params.programaId }).populate('usuario');
+        res.status(200).json(profesores);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// Obtener profesores por grupo
+export const getProfesoresByGrupo = async (req, res) => {
+    try {
+        const profesores = await Profesor.find({ grupo: req.params.grupoId }).populate('usuario');
+        res.status(200).json(profesores);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
